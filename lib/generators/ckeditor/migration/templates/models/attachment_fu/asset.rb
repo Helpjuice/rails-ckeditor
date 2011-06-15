@@ -1,7 +1,7 @@
 class Ckeditor::Asset < ActiveRecord::Base
   set_table_name "ckeditor_assets"
   
-  belongs_to :user
+  belongs_to :account
   belongs_to :assetable, :polymorphic => true
   
   scope :masters, where("parent_id IS NULL")

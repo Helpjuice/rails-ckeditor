@@ -11,7 +11,7 @@ class CreateCkeditorAssets < ActiveRecord::Migration
       t.string  :guid, :limit => 10
 		  
 		  t.integer :locale, :limit => 1, :default => 0
-		  t.integer :user_id
+		  t.integer :account_id
 		  
       # Uncomment	it to save images dimensions, if your need it
 #		  t.integer :width

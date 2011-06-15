@@ -9,14 +9,14 @@ class CreateAssets < ActiveRecord::Migration
 		  t.string  :assetable_type, :limit=>25
       t.string  :type, :limit=>25
 		  
-		  t.integer :user_id
+		  t.integer :account_id
 		  
       t.timestamps
     end
     
     add_index "assets", ["assetable_id", "assetable_type", "type"], :name => "ndx_type_assetable"
 		add_index "assets", ["assetable_id", "assetable_type"], :name => "fk_assets"
-		add_index "assets", ["user_id"], :name => "fk_user"
+		add_index "assets", ["account_id"], :name => "fk_account"
   end
 
   def self.down
