@@ -16,12 +16,13 @@ module Ckeditor
       
       ActionView::Helpers::AssetTagHelper.register_javascript_expansion :ckeditor => ["ckeditor/ckeditor"]
       
-      if Object.const_defined?("Formtastic")
-        ::Formtastic::SemanticFormBuilder.send :include, Ckeditor::Hooks::FormtasticBuilder
+      if Object.const_defined?("Formtastic") && Formtastic.const_defined?("Inputs")  
+        # Don't load the hook for Formtastic < 2.0.0 that (it crashes), apparently, didn't define a Formtastic::Inputs.
+        require "ckeditor/hooks/formtastic"
       end
       
       if Object.const_defined?("SimpleForm")
-        ::SimpleForm::FormBuilder.send :include, Ckeditor::Hooks::SimpleFormBuilder
+        require "ckeditor/hooks/simple_form"
       end
     end
   end
